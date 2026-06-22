@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>leisu · 资料整理与信息索引的思维工具</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background-color: #f6f7f9;
+      color: #1e2a3a;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0f1a24 0%, #182b3a 100%);
+      color: #e6edf3;
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(to bottom, transparent, #f6f7f9);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      color: #f0f7fe;
+    }
+
+    .hero .sub {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #b0c9dd;
+      max-width: 640px;
+      margin: 0 auto 1.2rem;
+      line-height: 1.6;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(4px);
+      padding: 0.5rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.95rem;
+      color: #b8d4ec;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* 浅色正文区 */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+      flex: 1;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.8rem 2rem;
+      flex: 1 1 260px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 20, 40, 0.04);
+      transition: all 0.2s ease;
+      border: 1px solid #eef1f5;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(0, 20, 50, 0.05);
+      border-color: #d6e0ea;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      color: #1e2f3f;
+      border-left: 4px solid #2c6e9c;
+      padding-left: 0.75rem;
+    }
+
+    .card p, .card ul {
+      font-size: 0.98rem;
+      color: #2a3d51;
+    }
+
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .card li {
+      padding: 0.3rem 0;
+      position: relative;
+      padding-left: 1.2rem;
+    }
+
+    .card li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: #3a7aaa;
+      font-weight: bold;
+    }
+
+    /* 强调色用于链接 */
+    a {
+      color: #1a6f9c;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: #b0cfe8;
+      transition: color 0.15s, text-decoration-color 0.15s;
+    }
+
+    a:hover {
+      color: #0d4b70;
+      text-decoration-color: #0d4b70;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin: 2.2rem 0 1.2rem;
+      color: #1b2c3b;
+      letter-spacing: -0.3px;
+    }
+
+    .usage-note {
+      background: #eaf0f7;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      margin: 2rem 0 1.5rem;
+      border-left: 5px solid #2c6e9c;
+    }
+
+    .usage-note p {
+      margin-bottom: 0.6rem;
+      font-size: 1rem;
+    }
+
+    .usage-note strong {
+      color: #144666;
+    }
+
+    .faq-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      padding: 1.2rem 1.5rem;
+      border-radius: 16px;
+      border: 1px solid #e6ecf2;
+    }
+
+    .faq-item .q {
+      font-weight: 500;
+      color: #1f3d57;
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .faq-item .a {
+      color: #3b546b;
+      font-size: 0.93rem;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #dce3ec;
+      font-size: 0.9rem;
+      color: #5b7085;
+      text-align: center;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.1rem; }
+      .hero .sub { font-size: 1rem; }
+      .card-grid { flex-direction: column; }
+      .faq-summary { grid-template-columns: 1fr; }
+      .container { padding: 1.8rem 1.2rem 3rem; }
+      .card { padding: 1.4rem; }
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .card-grid { gap: 1.2rem; }
+      .card { flex: 1 1 220px; }
+    }
+
+    /* 辅助可访问性 */
+    :focus-visible {
+      outline: 2px solid #2c6e9c;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 hero -->
+  <section class="hero">
+    <h1>leisu · 资料整理与信息索引</h1>
+    <p class="sub">不是又一个笔记工具——而是帮你把散落的信息片段，织成可检索、可推演的知识网格。</p>
+    <span class="tagline">面向研究、写作与长期阅读的思维基础设施</span>
+  </section>
+
+  <!-- 浅色正文区 -->
+  <div class="container">
+
+    <!-- 摘要 -->
+    <div class="card-grid">
+      <div class="card">
+        <h3>摘要</h3>
+        <p>我们每天接收大量文本、链接、片段与灵感，但多数平台只提供收藏夹或简单标签。<strong>leisu</strong> 从资料整理与信息索引的底层逻辑出发，让每一则内容都能被多维度关联、渐进式整理，而非一次性堆放。</p>
+      </div>
+      <div class="card">
+        <h3>核心逻辑</h3>
+        <ul>
+          <li>以“条目”为最小单位，支持自由嵌套与双向链接</li>
+          <li>自动提取时间线、来源与主题线索</li>
+          <li>轻量视图：卡片、大纲、图谱（逐步开放）</li>
+          <li>本地优先，数据可导出为通用格式</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>适用场景</h3>
+        <ul>
+          <li>长期课题的文献与笔记管理</li>
+          <li>跨平台书签与摘录的汇总索引</li>
+          <li>个人百科或术语表的渐进构建</li>
+          <li>写作前的素材梳理与结构推演</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 亮点：从索引视角切入 -->
+    <h2 class="section-title">信息索引，而非信息囤积</h2>
+    <p style="margin-bottom:1rem;">许多工具鼓励“一次记录，永不回顾”；<a href="https://zhs-main-leisu.com">leisu</a> 则试图提供一种更诚实的工作流——允许你在记录时保持轻量，在需要时通过交叉索引快速找回。它不是数据库，却可以成为你个人知识图的起点。</p>
+    <p style="margin-bottom:1.2rem;">当你积累了 200 条笔记，不同主题之间的连接会自然浮现；当你需要为某个观点寻找依据，通过关键词与关联条目可以逐层展开。这种结构化的松散，正是 leisu 在资料整理方向上的着力点。</p>
+
+    <!-- 使用建议 卡片形式 -->
+    <div class="usage-note">
+      <p><strong>使用建议</strong> · 不必强求完整分类</p>
+      <p>刚开始使用 <a href="https://zhs-main-leisu.com">leisu</a> 时，建议先以“收集+一句话摘要”为主，不必立刻建立复杂标签体系。随着条目增多，再用链接与主题视图自然聚合。信息索引的生命力在于持续微调，而非一次性完美归类。</p>
+      <p style="margin-top:0.8rem;">对于研究型用户，可尝试将文献摘要、数据片段、灵感记录分别设为不同条目，通过双向链接关联同一课题下的多个侧面。写作前利用时间线或关联图谱快速回顾脉络。</p>
+    </div>
+
+    <!-- FAQ 摘要（非完整FAQ，只摘取最相关） -->
+    <h2 class="section-title" style="margin-top:2.8rem;">常见疑问摘要</h2>
+    <div class="faq-summary">
+      <div class="faq-item">
+        <div class="q">与通用笔记工具的区别？</div>
+        <div class="a">leisu 更侧重“索引”而非“撰写”。每条内容默认附带来源与上下文，支持多对多关联，适合需要频繁交叉引用的资料体系。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">数据隐私如何？</div>
+        <div class="a">目前所有数据存储于浏览器本地，无强制云同步。未来可选加密同步，但仍保留本地优先原则。可随时导出为 JSON 或 Markdown。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">是否适合团队协作？</div>
+        <div class="a">当前版本以个人使用为主，但导出格式支持导入类似结构的工具。后续会考虑轻量共享视图，暂不提供实时协同。</div>
+      </div>
+      <div class="faq-item">
+        <div class="q">学习成本高吗？</div>
+        <div class="a">核心操作不超过三个：创建条目、添加链接、浏览关联。进阶用法（批量关联、视图切换）可在使用中逐步探索。</div>
+      </div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div style="background:#ffffff; border-radius:18px; padding:1.6rem 1.8rem; margin-top:2.5rem; border:1px solid #e4eaf1;">
+      <p style="font-size:1rem; color:#1e3447;"><strong>访问说明</strong> · <a href="https://zhs-main-leisu.com">leisu</a> 当前为公开测试版本，核心功能可正常使用。页面加载速度依赖网络环境，部分可视化视图仍在迭代中。如果你正在寻找一种更接近“第二大脑”而非“笔记本”的资料管理方式，可以前往了解具体操作与设计思路。</p>
+      <p style="font-size:0.9rem; color:#4c647a; margin-top:0.6rem;">无需注册即可试用大部分功能，本地数据不会自动上传。建议定期导出备份。</p>
+    </div>
+
+    <div class="footer-note">
+      <p>基于资料整理与信息索引的思维工具 · 内容持续迭代中</p>
+    </div>
+
+  </div>
+
+</body>
+</html>
