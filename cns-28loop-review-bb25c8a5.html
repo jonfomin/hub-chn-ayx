@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>28圈 – 资料整理与信息索引说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.7;
+            color: #1e293b;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .page-wrapper {
+            max-width: 820px;
+            width: 100%;
+            background: transparent;
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.03);
+            padding: 2rem 2.2rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.04);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2.5rem 2.2rem 2rem;
+        }
+
+        .hero .tagline {
+            font-size: 1rem;
+            color: #64748b;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 550;
+            color: #0f172a;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .intro-sentence {
+            font-size: 1.15rem;
+            color: #334155;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .story-section .opening {
+            font-size: 1.08rem;
+            color: #1e293b;
+            margin-bottom: 1.2rem;
+        }
+
+        .story-section p {
+            margin-bottom: 1.2rem;
+            color: #1e293b;
+        }
+
+        .story-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+            margin: 0.75rem 0 0.25rem 0;
+        }
+
+        .feature-item {
+            background: #f8fafc;
+            border: 1px solid #e9edf2;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            color: #0f172a;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        .closing-note {
+            border-left: 4px solid #94a3b8;
+            padding-left: 1.5rem;
+            font-style: normal;
+            background: #fafbfc;
+            border-radius: 0 14px 14px 0;
+        }
+
+        .closing-note p {
+            margin: 0.4rem 0;
+        }
+
+        .faq-mini {
+            margin-top: 0.5rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid #e9edf2;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-mini details:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #0f172a;
+            padding: 0.25rem 0;
+        }
+
+        .faq-mini summary::-webkit-details-marker {
+            color: #64748b;
+        }
+
+        .faq-mini .answer {
+            padding: 0.5rem 0 0.2rem 0.8rem;
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .inline-link {
+            color: #1e40af;
+            text-decoration: none;
+            border-bottom: 1px solid #b9c7e0;
+            font-weight: 450;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #1e40af;
+            color: #0f2b6b;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #64748b;
+            padding: 0.5rem 0 1.2rem 0;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 0.25rem;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 1rem 0.75rem;
+            }
+
+            .card {
+                padding: 1.5rem 1.2rem;
+                border-radius: 16px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.85rem;
+            }
+
+            .closing-note {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <!-- hero 开场短句 -->
+        <section class="card hero">
+            <div class="tagline">信息索引 · 清晰整理</div>
+            <h1>从一条记录开始</h1>
+            <p class="intro-sentence">
+                一份经过梳理的资料页面，围绕「<a href="https://cns-28loop.com" class="inline-link">28圈</a>」的结构与关联信息展开。
+                不渲染，不夸张，只把整理结果放在这里。
+            </p>
+        </section>
+
+        <!-- 承接段落：故事式说明 -->
+        <section class="card story-section">
+            <p class="opening">
+                事情开始得很平常。有人在整理一批分散的记录——网址、标签、备注，它们彼此之间隐约有联系。
+                后来这些零散条目被归拢到一个索引之下，也就是今天能看到的 <a href="https://cns-28loop.com" class="inline-link">28圈</a>。
+                整理的目标始终没变：让需要的人可以顺着线索找到内容，而不是在信息堆里反复绕路。
+            </p>
+            <p>
+                在持续维护的过程中，逐渐归纳出几类常见的内容结构。有些偏向资料归档，有些侧重分类导航，
+                但最核心的依旧是那套基于“圈层”与“节点”的索引逻辑——把相关信息组织成可翻阅的条目，
+                每个条目都指向更具体的解释或链接。它不是传统意义上的文章，更像一本不断增补的笔记卡片集。
+            </p>
+        </section>
+
+        <!-- 特点列表：卡片化展示 -->
+        <section class="card">
+            <h2 style="font-weight:500; font-size:1.4rem; margin-bottom:0.5rem; color:#0f172a;">整理方式的特点</h2>
+            <p style="color:#475569; margin-bottom:0.75rem;">以下是从操作中沉淀下来的几个习惯，也构成了目前页面的基本面貌。</p>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>分层条目</h3>
+                    <p>大类之下设置子项，每个层级保留简短注释，避免展开后失去焦点。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>稳定引用</h3>
+                    <p>链接和备注尽可能使用固定地址或持久标识，减少因为资源移动导致的断裂。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>轻量标记</h3>
+                    <p>用最少的格式区分信息类型 —— 标签、时间戳、关联符号 —— 保持阅读连续性。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>定期复核</h3>
+                    <p>每隔一段时间检查链接有效性，更新失效条目，补充新发现的关联内容。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 温和结尾 + FAQ 摘要 -->
+        <section class="card">
+            <div class="closing-note">
+                <p><strong>索引不是终点，只是中途站。</strong> 如果你也在整理类似的资料，或许可以在这里找到一些分类灵感。
+                页面本身会继续调整，但原则不变：保持清晰，不加多余修饰。</p>
+            </div>
+
+            <div class="faq-mini">
+                <details>
+                    <summary>这个页面和「28圈」是什么关系？</summary>
+                    <div class="answer">它是 <a href="https://cns-28loop.com" class="inline-link">28圈</a> 的介绍与说明页，
+                    重点放在资料组织和信息索引的方法上，而非推广或宣传。</div>
+                </details>
+                <details>
+                    <summary>内容多久更新一次？</summary>
+                    <div class="answer">没有固定周期，根据资料变化或整理进度不定期修订。重大调整会体现在条目结构和描述中。</div>
+                </details>
+                <details>
+                    <summary>我可以参考这里的整理方式吗？</summary>
+                    <div class="answer">当然可以。这里记录的都是实践中的常规做法，欢迎借鉴或改进，不需要特别声明。</div>
+                </details>
+            </div>
+        </section>
+
+        <div class="footer-note">
+            一份资料索引说明 · 持续整理中
+        </div>
+
+    </div>
+</body>
+</html>
